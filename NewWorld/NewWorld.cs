@@ -314,13 +314,16 @@ namespace NewWorld
                     foreach (var row in line.Value)
                         if (row.Value > 0)
                             count++;
-                int cost = count * count*300;
+                int cost = count * count*100;
                 int choosePartId = WorldMapSystem.instance.choosePartId;
                 int choosePlaceId = WorldMapSystem.instance.choosePlaceId;
                 if (choosePartId >= 0 && choosePlaceId >= 0)
-                    if (DateFile.instance.baseHomeDate[choosePartId][choosePlaceId] > 0)
-                        cost = 2000000;
-
+                {
+                    if ((!DateFile.instance.baseHomeDate.ContainsKey(choosePartId))
+                        || (!DateFile.instance.baseHomeDate[choosePartId].ContainsKey(choosePlaceId))
+                        || (DateFile.instance.baseHomeDate[choosePartId][choosePlaceId] > 0))
+                            cost = 2000000;
+                }
                 Dictionary<int, string> endEventDate = new Dictionary<int, string>{
                         { 0,"" },//描述
                         { 1,"0"},//

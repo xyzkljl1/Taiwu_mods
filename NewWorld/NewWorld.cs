@@ -298,7 +298,7 @@ namespace NewWorld
                             { 5,""},//
                             { 6,"TIME&20|ATTMAX&407&500"},//条件
                             { 7,"-1"},//
-                            { 8,"TIME&-20|RES&6&-500|END&"+EventNewWorldMagicNumber.ToString()},//结束处理
+                            { 8,"TIME&20|RES&6&-500|END&"+EventNewWorldMagicNumber.ToString()},//结束处理
                             { 9,"0"},
                             {10,"" },
                             {11,"0" }};
@@ -314,7 +314,7 @@ namespace NewWorld
                     foreach (var row in line.Value)
                         if (row.Value > 0)
                             count++;
-                int cost = count * count*100;
+                int cost = count * count*3000;
                 int choosePartId = WorldMapSystem.instance.choosePartId;
                 int choosePlaceId = WorldMapSystem.instance.choosePlaceId;
                 if (choosePartId >= 0 && choosePlaceId >= 0)
@@ -322,7 +322,7 @@ namespace NewWorld
                     if ((!DateFile.instance.baseHomeDate.ContainsKey(choosePartId))
                         || (!DateFile.instance.baseHomeDate[choosePartId].ContainsKey(choosePlaceId))
                         || (DateFile.instance.baseHomeDate[choosePartId][choosePlaceId] > 0))
-                            cost = 2000000;
+                            cost = 9999999;
                 }
                 Dictionary<int, string> endEventDate = new Dictionary<int, string>{
                         { 0,"" },//描述
@@ -333,7 +333,7 @@ namespace NewWorld
                         { 5,""},//
                         { 6,"TIME&20|ATTMAX&407&"+cost.ToString()},//条件
                         { 7,"-1"},//
-                        { 8,"TIME&-20|RES&6&-"+cost.ToString()+"|END&"+EventNewWorldMagicNumber.ToString()},//结束处理
+                        { 8,"TIME&20|RES&6&-"+cost.ToString()+"|END&"+EventNewWorldMagicNumber.ToString()},//结束处理
                         { 9,"0"},
                         {10,"" },
                         {11,"0" }};
